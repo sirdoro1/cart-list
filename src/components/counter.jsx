@@ -22,6 +22,7 @@ class Counter extends Component {
     render() { 
         return (
             <div>
+                {this.props.children}
                 <button onClick={this.handleDecrement} className="btn btn-secondary btn-sm mx-1">Decrement</button> 
                 <span className={this.getClassesMethod()}>{this.formatCount()}</span>
                 <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm mx-1">Increment</button> 
