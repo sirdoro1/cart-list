@@ -6,14 +6,26 @@ class Counter extends Component {
         tags: ['Juventus','Manchester United','Real Madrid','Paris Saint Germanin','Dortmount']
     }
 
+    handleIncrement = ()=> {
+        this.setState({
+            count: this.state.count + 1,
+        })
+    }
+
+    handleDecrement = ()=> {
+        if(this.state.count > 0){
+            this.setState({
+                count: this.state.count - 1,
+            })
+        }
+    }
+
     render() { 
         return (
             <div>
+                <button onClick={this.handleDecrement} style={{fontSize:10, fontWeight:'bold'}} className="btn btn-secondary btn-sm mx-1">Decrement</button> 
                 <span className={this.getClassesMethod()}>{this.formatCount()}</span>
-                <button style={{fontSize:10, fontWeight:'bold'}} className="btn btn-secondary btn-sm">Increment</button> 
-                <ul>
-                    {this.state.tags.map( tag => <li key={tag}>{tag}</li>)}
-                </ul>
+                <button onClick={this.handleIncrement} style={{fontSize:10, fontWeight:'bold'}} className="btn btn-secondary btn-sm mx-1">Increment</button> 
             </div>
         );
     }
