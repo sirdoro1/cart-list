@@ -2,20 +2,19 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        count: 1,
-        tags: ['Juventus','Manchester United','Real Madrid','Paris Saint Germanin','Dortmount']
+        value: this.props.value
     }
 
     handleIncrement = ()=> {
         this.setState({
-            count: this.state.count + 1,
+            value: this.state.value + 1,
         })
     }
 
     handleDecrement = ()=> {
-        if(this.state.count > 0){
+        if(this.state.value > 0){
             this.setState({
-                count: this.state.count - 1,
+                value: this.state.value - 1,
             })
         }
     }
@@ -23,22 +22,22 @@ class Counter extends Component {
     render() { 
         return (
             <div>
-                <button onClick={this.handleDecrement} style={{fontSize:10, fontWeight:'bold'}} className="btn btn-secondary btn-sm mx-1">Decrement</button> 
+                <button onClick={this.handleDecrement} className="btn btn-secondary btn-sm mx-1">Decrement</button> 
                 <span className={this.getClassesMethod()}>{this.formatCount()}</span>
-                <button onClick={this.handleIncrement} style={{fontSize:10, fontWeight:'bold'}} className="btn btn-secondary btn-sm mx-1">Increment</button> 
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm mx-1">Increment</button> 
             </div>
         );
     }
 
     getClassesMethod() {
         let classes = "badge m-2 badge-";
-        classes += this.state.count === 0 ? 'warning' : 'primary';
+        classes += this.state.value === 0 ? 'warning' : 'primary px-4';
         return classes;
     }
 
     formatCount(){
-        const {count} = this.state;
-        return count === 0 ? 'Zero': count;
+        const {value} = this.state;
+        return value === 0 ? 'Zero': value;
     }
 }
  
