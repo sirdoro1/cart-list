@@ -52,11 +52,18 @@ class App extends Component {
         })
     }
 
+    handleAdd = () => {
+        const newArray = {id:this.state.counters.length + 1 ,value:0};
+        this.setState({
+            counters: [...this.state.counters,newArray]
+        });
+    }
+
     render() { 
       return ( <React.Fragment>
         <Navbar totalCounter={this.state.counters.filter(c => c.value > 0).length} />
         <main className="container">
-          <Counters counters={this.state.counters} onReset={this.handleReset} onDecrement={this.handleDecrement} onIncrement={this.handleIncrement} onDelete={this.handleDelete}/>
+          <Counters counters={this.state.counters} onAdd={this.handleAdd} onReset={this.handleReset} onDecrement={this.handleDecrement} onIncrement={this.handleIncrement} onDelete={this.handleDelete}/>
         </main>
       </React.Fragment> );
     }
